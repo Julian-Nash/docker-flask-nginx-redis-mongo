@@ -14,11 +14,11 @@ services:
     container_name: redis
     restart: always
 
-  # DB auth ignored for testing
-  mongo:
-    image: mongo
-    container_name: mongo
-    restart: always
+  # DB ignored for testing
+  # mongo:
+  #   image: mongo
+  #   container_name: mongo
+  #   restart: always
 
   flask:
     build: ./flask
