@@ -9,12 +9,23 @@ services:
     ports:
       - "80:80"
 
+  redis:
+    image: redis
+    container_name: redis
+    restart: always
+
+  # DB auth ignored for testing
+  mongo:
+    image: mongo
+    container_name: mongo
+    restart: always
+
   flask:
     build: ./flask
     container_name: flask
     restart: always
     ports:
       - "3030:3030"
-    # expose 3000 to test uwsgi is serving
+    # expose 3000 to test uwsgi serving from flask container
     expose:
       - "3030"

@@ -2,5 +2,5 @@ from mongoengine import Document, StringField
 
 
 class Message(Document):
-    name = StringField()
+    name = StringField(unique=True)
     message = StringField()
