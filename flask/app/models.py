@@ -1,6 +1,14 @@
-from mongoengine import Document, StringField
+from mongoengine import Document, StringField, DateTimeField
+import datetime
 
 
 class Message(Document):
-    name = StringField(unique=True)
+    name = StringField()
     message = StringField()
+    date = DateTimeField(default=datetime.datetime.utcnow)
+
+    meta = {
+        "ordering": [
+            "-date"
+        ]
+    }

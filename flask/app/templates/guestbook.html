@@ -1,0 +1,72 @@
+{% extends "templates/public_template.html" %}
+
+{% block title %}Guestbook{% endblock %}
+
+{% block main %}
+
+<div class="container mb-3">
+    <div class="row">
+        <div class="col">
+            <h1 class="display-4">Sign the guestbook</h1>
+            <p class="lead">Leave your name and message below to see the database in action</p>
+            <hr>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12 col-lg-8 offset-lg-2">
+            <form action="/guestbook" method="POST">
+                <div class="form-group">
+                    <label>Your name</label>
+                    <input type="text" class="form-control" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label>Your message</label>
+                    <textarea class="form-control" name="message" rows="3" required></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<br>
+
+{% if not messages|length > 0 %}
+
+<div class="container">
+        <div class="row">
+            <div class="col-sm-12 col-lg-8 offset-lg-2">
+                <h5>Messages</h5>
+                <hr>
+                <p>No messages! Go ahead and write one</p>
+            </div>
+        </div>
+    </div>
+
+{% else %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12 col-lg-8 offset-lg-2">
+            <h5>Messages</h5>
+            <hr>
+            {% for message in messages %}
+            <div class="card mb-3">
+                    <div class="card-header">
+                      {{ message.name }} wrote on {{ message.date.strftime('%d-%m-%y at %H:%M') }}
+                    </div>
+                    <div class="card-body">
+                      {{message.message}}
+                    </div>
+                  </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+{% endif %}
+
+{% endblock %}

@@ -1,205 +1,177 @@
-<!doctype html>
-<html lang="en">
+{% extends "templates/public_template.html" %}
 
-<head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+{% block title %}Index{% endblock %}
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
-        crossorigin="anonymous">
+{% block main %}
 
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-
-    <title>Hello, world!</title>
-</head>
-
-<body>
-
-    <main>
-
-        <div class="container mb-3 mt-3">
-            <div class="row">
-                <div class="col">
-                    <h1 class="display-3">Hello again, world!</h1>
-                    <p class="lead">This simple application is powered by the open source technology you see below...</p>
-                    <small class="test-muted">{{ hits }} hits from Redis cache</small>
-                    <hr>
-                </div>
-            </div>
+<div class="container mb-3">
+    <div class="row">
+        <div class="col">
+            <h1 class="display-4">Hello again, world!</h1>
+            <p class="lead">This simple application is powered by the open source technology you see below...</p>
+            <small class="test-muted">{{ hits }} hits from Redis cache</small>
+            <hr>
         </div>
+    </div>
+</div>
 
-        <div class="container">
-            <div class="row">
-                <div class="col">
-                    <div class="card-columns">
-                        <div class="card mb-3">
-                            <img class="card-img-top img-fluid" src="{{ url_for('static', filename='img/docker-logo.png') }}">
-                            <div class="card-body">
-                                <h5 class="card-title">Docker CE</h5>
-                                <p class="card-text">
-                                    Docker is a tool designed to make it easier to create, deploy, and run applications
-                                    by using containers. Containers allow a developer to package up an application with
-                                    all of the parts it needs, such as libraries and other dependencies, and ship it
-                                    all out as one package.
-                                </p>
-                            </div>
-                            <div class="card-footer">
-                                <a href="https://docs.docker.com/">
-                                    <small>Learn more about Docker</small>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="card mb-3">
-                            <img class="card-img-top img-fluid" src="{{ url_for('static', filename='img/python-logo.png') }}">
-                            <div class="card-body">
-                                <h5 class="card-title">Python</h5>
-                                <p class="card-text">
-                                    Python is a programming language that lets you work more quickly and integrate your
-                                    systems more effectively.
-                                    You can learn to use Python and see almost immediate gains in productivity and
-                                    lower maintenance costs.
-                                </p>
-                            </div>
-                            <div class="card-footer">
-                                <a href="https://python.org">
-                                    <small>Learn more about Python</small>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="card mb-3">
-                            <img class="card-img-top img-fluid" src="{{ url_for('static', filename='img/flask-logo.png') }}">
-                            <div class="card-body">
-                                <h5 class="card-title">Flask</h5>
-                                <p class="card-text">
-                                    Flask is a micro web framework written in Python. It is classified as a
-                                    microframework because it does not require particular tools or libraries.It has
-                                    no database abstraction layer, form validation, or any other components where
-                                    pre-existing third-party libraries provide common functions.
-                                </p>
-                            </div>
-                            <div class="card-footer">
-                                <a href="http://flask.pocoo.org/">
-                                    <small>Learn more about Flask</small>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="card mb-3">
-                            <img class="card-img-top img-fluid" src="{{ url_for('static', filename='img/nginx-logo.png') }}">
-                            <div class="card-body">
-                                <h5 class="card-title">Nginx</h5>
-                                <p class="card-text">
-                                    NGINX is a free, open-source, high-performance HTTP server and reverse proxy, as
-                                    well as an IMAP/POP3 proxy server. NGINX is known for its high performance,
-                                    stability, rich feature set, simple configuration, and low resource consumption.
-                                    NGINX is one of a handful of servers written to address the C10K problem.
-                                </p>
-                            </div>
-                            <div class="card-footer">
-                                <a href="https://nginx.org/en/docs/">
-                                    <small>Learn more about Nginx</small>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="card mb-3">
-                            <img class="card-img-top img-fluid" src="{{ url_for('static', filename='img/redis-logo.png') }}">
-                            <div class="card-body">
-                                <h5 class="card-title">Redis</h5>
-                                <p class="card-text">
-                                    Redis is an open source (BSD licensed), in-memory data structure store, used as a
-                                    database, cache and message broker. It supports data structures such as strings,
-                                    hashes, lists, sets, sorted sets with range queries, bitmaps, hyperloglogs,
-                                    geospatial indexes with radius queries and streams. Redis has built-in replication,
-                                    Lua scripting, LRU eviction, transactions and different levels of on-disk
-                                    persistence, and provides high availability via Redis Sentinel and automatic
-                                    partitioning with Redis Cluster.
-                                </p>
-                            </div>
-                            <div class="card-footer">
-                                <a href="https://redis.io/documentation">
-                                    <small>Learn more about Redis</small>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="card mb-3">
-                            <img class="card-img-top img-fluid" src="{{ url_for('static', filename='img/mongodb-logo.jpg') }}">
-                            <div class="card-body">
-                                <h5 class="card-title">MongoDB</h5>
-                                <p class="card-text">
-                                    MongoDB is an open source, document-oriented database designed with both
-                                    scalability and developer agility in mind. Instead of storing your data in tables
-                                    and rows as you would with a relational database, in MongoDB you store JSON-like
-                                    documents with dynamic schemas.
-                                </p>
-                            </div>
-                            <div class="card-footer">
-                                <a href="https://docs.mongodb.com/">
-                                    <small>Learn more about MongoDB</small>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="card mb-3">
-                            <img class="card-img-top img-fluid" src="{{ url_for('static', filename='img/uwsgi-logo.png') }}">
-                            <div class="card-body">
-                                <h5 class="card-title">uWSGI</h5>
-                                <p class="card-text">
-                                    The uWSGI project aims at developing a full stack for building hosting services.
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <div class="card-columns">
+                <div class="card mb-3">
+                    <img class="card-img-top img-fluid" src="{{ url_for('static', filename='img/docker-logo.png') }}">
+                    <div class="card-body">
+                        <h5 class="card-title">Docker CE</h5>
+                        <p class="card-text">
+                            Docker is a tool designed to make it easier to create, deploy, and run applications
+                            by using containers. Containers allow a developer to package up an application with
+                            all of the parts it needs, such as libraries and other dependencies, and ship it
+                            all out as one package.
+                        </p>
+                    </div>
+                    <div class="card-footer">
+                        <a href="https://docs.docker.com/">
+                            <small>Learn more about Docker</small>
+                        </a>
+                    </div>
+                </div>
+                <div class="card mb-3">
+                    <img class="card-img-top img-fluid" src="{{ url_for('static', filename='img/python-logo.png') }}">
+                    <div class="card-body">
+                        <h5 class="card-title">Python</h5>
+                        <p class="card-text">
+                            Python is a programming language that lets you work more quickly and integrate your
+                            systems more effectively.
+                            You can learn to use Python and see almost immediate gains in productivity and
+                            lower maintenance costs.
+                        </p>
+                    </div>
+                    <div class="card-footer">
+                        <a href="https://python.org">
+                            <small>Learn more about Python</small>
+                        </a>
+                    </div>
+                </div>
+                <div class="card mb-3">
+                    <img class="card-img-top img-fluid" src="{{ url_for('static', filename='img/flask-logo.png') }}">
+                    <div class="card-body">
+                        <h5 class="card-title">Flask</h5>
+                        <p class="card-text">
+                            Flask is a micro web framework written in Python. It is classified as a
+                            microframework because it does not require particular tools or libraries.It has
+                            no database abstraction layer, form validation, or any other components where
+                            pre-existing third-party libraries provide common functions.
+                        </p>
+                    </div>
+                    <div class="card-footer">
+                        <a href="http://flask.pocoo.org/">
+                            <small>Learn more about Flask</small>
+                        </a>
+                    </div>
+                </div>
+                <div class="card mb-3">
+                    <img class="card-img-top img-fluid" src="{{ url_for('static', filename='img/nginx-logo.png') }}">
+                    <div class="card-body">
+                        <h5 class="card-title">Nginx</h5>
+                        <p class="card-text">
+                            NGINX is a free, open-source, high-performance HTTP server and reverse proxy, as
+                            well as an IMAP/POP3 proxy server. NGINX is known for its high performance,
+                            stability, rich feature set, simple configuration, and low resource consumption.
+                            NGINX is one of a handful of servers written to address the C10K problem.
+                        </p>
+                    </div>
+                    <div class="card-footer">
+                        <a href="https://nginx.org/en/docs/">
+                            <small>Learn more about Nginx</small>
+                        </a>
+                    </div>
+                </div>
+                <div class="card mb-3">
+                    <img class="card-img-top img-fluid" src="{{ url_for('static', filename='img/redis-logo.png') }}">
+                    <div class="card-body">
+                        <h5 class="card-title">Redis</h5>
+                        <p class="card-text">
+                            Redis is an open source (BSD licensed), in-memory data structure store, used as a
+                            database, cache and message broker. It supports data structures such as strings,
+                            hashes, lists, sets, sorted sets with range queries, bitmaps, hyperloglogs,
+                            geospatial indexes with radius queries and streams. Redis has built-in replication,
+                            Lua scripting, LRU eviction, transactions and different levels of on-disk
+                            persistence, and provides high availability via Redis Sentinel and automatic
+                            partitioning with Redis Cluster.
+                        </p>
+                    </div>
+                    <div class="card-footer">
+                        <a href="https://redis.io/documentation">
+                            <small>Learn more about Redis</small>
+                        </a>
+                    </div>
+                </div>
+                <div class="card mb-3">
+                    <img class="card-img-top img-fluid" src="{{ url_for('static', filename='img/mongodb-logo.jpg') }}">
+                    <div class="card-body">
+                        <h5 class="card-title">MongoDB</h5>
+                        <p class="card-text">
+                            MongoDB is an open source, document-oriented database designed with both
+                            scalability and developer agility in mind. Instead of storing your data in tables
+                            and rows as you would with a relational database, in MongoDB you store JSON-like
+                            documents with dynamic schemas.
+                        </p>
+                    </div>
+                    <div class="card-footer">
+                        <a href="https://docs.mongodb.com/">
+                            <small>Learn more about MongoDB</small>
+                        </a>
+                    </div>
+                </div>
+                <div class="card mb-3">
+                    <img class="card-img-top img-fluid" src="{{ url_for('static', filename='img/uwsgi-logo.png') }}">
+                    <div class="card-body">
+                        <h5 class="card-title">uWSGI</h5>
+                        <p class="card-text">
+                            The uWSGI project aims at developing a full stack for building hosting services.
 
-                                    Application servers (for various programming languages and protocols), proxies,
-                                    process managers and monitors are all implemented using a common api and a common
-                                    configuration style.
+                            Application servers (for various programming languages and protocols), proxies,
+                            process managers and monitors are all implemented using a common api and a common
+                            configuration style.
 
-                                    The “WSGI” part in the name is a tribute to the namesake Python standard, as it has
-                                    been the first developed plugin for the project.
+                            The “WSGI” part in the name is a tribute to the namesake Python standard, as it has
+                            been the first developed plugin for the project.
 
-                                    Versatility, performance, low-resource usage and reliability are the strengths of
-                                    the project (and the only rules followed).
-                                </p>
-                            </div>
-                            <div class="card-footer">
-                                <a href="https://uwsgi-docs.readthedocs.io/en/latest/index.html">
-                                    <small>Learn more about uWSGI</small>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="card mb-3">
-                            <img class="card-img-top img-fluid" src="{{ url_for('static', filename='img/bootstrap-logo.png') }}">
-                            <div class="card-body">
-                                <h5 class="card-title">Bootstrap</h5>
-                                <p class="card-text">
-                                    Bootstrap is a free and open-source front-end framework for designing websites and
-                                    web applications. It contains HTML- and CSS-based design templates for typography,
-                                    forms, buttons, navigation and other interface components, as well as optional
-                                    JavaScript extensions. Unlike many earlier web frameworks, it concerns itself with
-                                    front-end development only.
+                            Versatility, performance, low-resource usage and reliability are the strengths of
+                            the project (and the only rules followed).
+                        </p>
+                    </div>
+                    <div class="card-footer">
+                        <a href="https://uwsgi-docs.readthedocs.io/en/latest/index.html">
+                            <small>Learn more about uWSGI</small>
+                        </a>
+                    </div>
+                </div>
+                <div class="card mb-3">
+                    <img class="card-img-top img-fluid" src="{{ url_for('static', filename='img/bootstrap-logo.png') }}">
+                    <div class="card-body">
+                        <h5 class="card-title">Bootstrap</h5>
+                        <p class="card-text">
+                            Bootstrap is a free and open-source front-end framework for designing websites and
+                            web applications. It contains HTML- and CSS-based design templates for typography,
+                            forms, buttons, navigation and other interface components, as well as optional
+                            JavaScript extensions. Unlike many earlier web frameworks, it concerns itself with
+                            front-end development only.
 
-                                    Bootstrap is the second most-starred project on GitHub, with more than 129,000
-                                    stars.
-                                </p>
-                            </div>
-                            <div class="card-footer">
-                                <a href="https://getbootstrap.com/">
-                                    <small>Learn more about Bootstrap</small>
-                                </a>
-                            </div>
-                        </div>
+                            Bootstrap is the second most-starred project on GitHub, with more than 129,000
+                            stars.
+                        </p>
+                    </div>
+                    <div class="card-footer">
+                        <a href="https://getbootstrap.com/">
+                            <small>Learn more about Bootstrap</small>
+                        </a>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
+</div>
 
-    </main>
-
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-        crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
-        crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
-        crossorigin="anonymous"></script>
-</body>
-
-</html>
+{% endblock %}

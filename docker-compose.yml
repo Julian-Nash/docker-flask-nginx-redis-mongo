@@ -14,18 +14,12 @@ services:
     container_name: redis
     restart: always
 
-  # DB ignored for testing
-  # mongo:
-  #   image: mongo
-  #   container_name: mongo
-  #   restart: always
+  mongo:
+    image: mongo
+    container_name: mongo
+    restart: always
 
   flask:
     build: ./flask
     container_name: flask
     restart: always
-    ports:
-      - "3030:3030"
-    # expose 3000 to test uwsgi serving from flask container
-    expose:
-      - "3030"
