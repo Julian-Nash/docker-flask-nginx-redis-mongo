@@ -2,22 +2,31 @@ version: "3.7"
 
 services:
 
+  mongo:
+    image: mongo
+    container_name: mongo
+    restart: always
+    # Username and password user for local development. Change to something suitable for production
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: example
+    # Expose port 27017 locally for local debugging - remove in production
+    ports:
+      - "27017:27017"
+
+  redis:
+    image: redis
+    # Change password `example` to something suitable
+    command: redis-server --requirepass example
+    container_name: redis
+    restart: always
+
   nginx:
     build: ./nginx
     container_name: nginx
     restart: always
     ports:
       - "80:80"
-
-  redis:
-    image: redis
-    container_name: redis
-    restart: always
-
-  mongo:
-    image: mongo
-    container_name: mongo
-    restart: always
 
   flask:
     build: ./flask

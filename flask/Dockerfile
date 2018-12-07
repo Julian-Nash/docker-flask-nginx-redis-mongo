@@ -1,6 +1,11 @@
 FROM python:3.7.1-stretch
 
-# FROM python:3.7.1-alpine3.8  # error
+# Environment variables
+
+ENV REDIS_PW = "root"
+
+ENV MONGO_USERNAME = "root"
+ENV MONGO_PASSWORD = "example"
 
 ADD . /code
 
