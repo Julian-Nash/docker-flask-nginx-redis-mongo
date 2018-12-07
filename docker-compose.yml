@@ -7,6 +7,7 @@ services:
     container_name: mongo
     restart: always
     # Username and password user for local development. Change to something suitable for production
+    # Be sure to update __init__.py located in /flask/app when you change the username & password
     environment:
       MONGO_INITDB_ROOT_USERNAME: root
       MONGO_INITDB_ROOT_PASSWORD: example
@@ -17,6 +18,7 @@ services:
   redis:
     image: redis
     # Change password `example` to something suitable
+    # Be sure to update __init__.py located in /flask/app when you change the password
     command: redis-server --requirepass example
     container_name: redis
     restart: always
