@@ -19,7 +19,8 @@ connect(
     port=27017,
     username="root",
     password="example",
-    authentication_source="admin"
+    authentication_source="admin",
+    connect=False
 )
 
 
